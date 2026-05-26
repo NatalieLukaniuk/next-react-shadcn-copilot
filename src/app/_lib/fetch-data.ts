@@ -9,7 +9,7 @@ export async function fetchChatsHistory(): Promise<ChatHistoryItem[]> {
     
   try {
     console.log("Fetching chats history...");
-    await new Promise((resolve) => setTimeout(resolve, 30000));
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     console.log("Fetching chats history - done");
     const response = await fetch(CHATS_HISTORY_ENDPOINT);   
     if (!response.ok) {
