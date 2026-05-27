@@ -1,6 +1,4 @@
 import ChatDetailsList from "./_components/chat-details";
-import AppsList from "./_components/apps-list";
-import CatsList from "./_components/cats-list";
 
 export default async function Page(props: {
   searchParams?: Promise<{
@@ -20,14 +18,7 @@ export default async function Page(props: {
 
         <ChatDetailsList searchQuery={query} currentPage={currentPage} />
       </div>
-      {/* <div>
-      <h1>Cats</h1>
-        <CatsList />
-    </div>
-    <div>
-      <h1>Apps</h1>
-        <AppsList />
-    </div> */}
+
     </>
   );
 }

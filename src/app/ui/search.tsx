@@ -46,9 +46,7 @@ export default function SearchField({
           <Search size={16} color="#000000" strokeWidth={1.5} />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">{children}</InputGroupAddon>
-        <InputGroupAddon align="inline-end">
-          <InputGroupButton>Search</InputGroupButton>
-        </InputGroupAddon>
+
       </InputGroup>
     </Field>
   );
