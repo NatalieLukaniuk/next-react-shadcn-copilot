@@ -5,6 +5,7 @@ import SearchField from "@/app/ui/search";
 import { Button } from "@/components/ui/button";
 import { Item, ItemActions, ItemContent, ItemDescription, ItemGroup, ItemTitle } from "@/components/ui/item";
 import { ArrowRightBig } from "@deemlol/next-icons";
+import Link from "next/link";
 import { Suspense } from "react";
 
 export default async function ChatDetailsList({searchQuery, currentPage}: {searchQuery: string, currentPage: number}) {
@@ -52,13 +53,16 @@ async function ChatListWrapper(
 
 function ChatDetailsItem(item: ChatHistoryItem) {
   return (
+    <Link href={`/chat/chat-details/${item.id}`} className="w-full">
     <Item>
       <ItemContent>
-        <ItemTitle>{item.topic}</ItemTitle>
+        <ItemTitle>{item.topic} {item.id}</ItemTitle>
         <ItemDescription>{item.description}</ItemDescription>
       </ItemContent>
       <ItemActions><Button>
         <ArrowRightBig size={28} color="#ffffff" strokeWidth={1.5} /></Button></ItemActions>      
     </Item>
+    </Link>
+    
   );
 }

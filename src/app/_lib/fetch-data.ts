@@ -23,6 +23,21 @@ export async function fetchChatsHistory(): Promise<ChatHistoryItem[]> {
   }
 }
 
+export async function fetchChatDetails(chatId: string): Promise<ChatHistoryItem | null> {
+  try {
+    const response = await fetch(`${CHATS_HISTORY_ENDPOINT}/${chatId}`);  
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  }
+  catch (error) {
+    console.error(`Failed to fetch chat details for chatId ${chatId}:`, error);
+    return null;
+  }
+}
+
 export async function fetchCats(): Promise<Cat[]> {
   try {
     const response = await fetch(CATS_ENDPOINT);    
