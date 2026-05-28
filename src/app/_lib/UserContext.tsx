@@ -15,6 +15,8 @@ const UserContext = React.createContext<User>({
 
 const UserUpdateContext = React.createContext<(name: string, lastName: string) => void>(() => {});
 
+const UserLogoutContext = React.createContext<() => void>(() => {});
+
 export function useUserInfo() {
   const user = React.useContext(UserContext);
   return user;
@@ -23,6 +25,11 @@ export function useUserInfo() {
 export function useSetUserInfo() {
   const setUserInfo = React.useContext(UserUpdateContext);
   return setUserInfo;
+}
+
+export function useLogout() {
+  const logout = React.useContext(UserLogoutContext);
+  return logout;
 }
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
@@ -40,10 +47,20 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     });
   }
 
+  function logout() {
+    setUser({
+      isAuthenticated: false,
+      name: '',
+      lastName: ''
+    });
+  }
+
     return (
     <UserContext.Provider value={user}>
       <UserUpdateContext.Provider value={setUserInfo}>
-        {children}
+        <UserLogoutContext.Provider value={logout}>
+          {children}
+        </UserLogoutContext.Provider>
       </UserUpdateContext.Provider>
     </UserContext.Provider>
   );
