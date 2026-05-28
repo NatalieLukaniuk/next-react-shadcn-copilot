@@ -4,6 +4,7 @@ import "./globals.css";
 import { CopilotKit } from "@copilotkit/react-core"; 
 import "@copilotkit/react-ui/v2/styles.css";
 import { cn } from "@/lib/utils";
+import { UserProvider } from "./_lib/UserContext";
 
 const robotoHeading = Roboto({subsets:['latin'],variable:'--font-heading'});
 
@@ -36,7 +37,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <CopilotKit runtimeUrl="/api/copilotkit">
+        <UserProvider>
           {children}
+        </UserProvider>
         </CopilotKit>
       </body>
     </html>
