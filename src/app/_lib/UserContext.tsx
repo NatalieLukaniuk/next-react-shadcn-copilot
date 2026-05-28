@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from "react";
+import React, { useState, createContext, useContext } from "react";
 
 export interface User {
   isAuthenticated: boolean;
@@ -7,28 +7,28 @@ export interface User {
   lastName: string;
 }
 
-const UserContext = React.createContext<User>({
+const UserContext = createContext<User>({
   isAuthenticated: false,
   name: '',
   lastName: ''
 });
 
-const UserUpdateContext = React.createContext<(name: string, lastName: string) => void>(() => {});
+const UserUpdateContext = createContext<(name: string, lastName: string) => void>(() => {});
 
-const UserLogoutContext = React.createContext<() => void>(() => {});
+const UserLogoutContext = createContext<() => void>(() => {});
 
 export function useUserInfo() {
-  const user = React.useContext(UserContext);
+  const user = useContext(UserContext);
   return user;
 }
 
 export function useSetUserInfo() {
-  const setUserInfo = React.useContext(UserUpdateContext);
+  const setUserInfo = useContext(UserUpdateContext);
   return setUserInfo;
 }
 
 export function useLogout() {
-  const logout = React.useContext(UserLogoutContext);
+  const logout = useContext(UserLogoutContext);
   return logout;
 }
 
