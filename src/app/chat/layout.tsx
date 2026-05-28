@@ -1,5 +1,6 @@
 import ChatNavigation from "../ui/chat-navigation";
 import Image from 'next/image';
+import ResizeTracker from "../ui/resize-tracker";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   
@@ -15,6 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <ChatNavigation />
         <section className="grow p-6 md:overflow-y-auto md:p-12">{children}</section>
       </div>
+      <ResizeTracker />
     </div>
   );
 }
